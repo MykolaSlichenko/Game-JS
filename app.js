@@ -89,7 +89,7 @@ function addShipPiece(ship) {
   } else {
     shipBlocks.every(
       (_shipBlock, index) =>
-        (valid = shipBlock[0].id < 90 + (width * index + 1))
+        (valid = shipBlocks[0].id < 90 + (width * index + 1))
     );
   }
 
