@@ -74,4 +74,4 @@ function addShipPiece(ship) {
   });
 }
 
-addShipPiece(destroyer);
+ships.forEach((ship) => addShipPiece(ship));
