@@ -165,12 +165,18 @@ let playerTurn
 
 //Start game
 function startGame() {
-   if (optionContainer.children.length != 0) {
-    infoDisplay.textContent = 'Please place all your pieces first!'
-   } else {
-    const allBoardBlocks = document.querySelectorAll('#computer div')
-    allBoardBlocks.forEach(block => block.addEventListener('click', handleClick))
-   }
+  if (playerTurn === undefined) {
+    if (optionContainer.children.length != 0) {
+      infoDisplay.textContent = 'Please place all your pieces first!'
+     } else {
+      const allBoardBlocks = document.querySelectorAll('#computer div')
+      allBoardBlocks.forEach(block => block.addEventListener('click', handleClick))
+      playerTurn = true
+      turnDisplay.textContent = 'Your Go!'
+      infoDisplay.textContent = 'The game has started!'
+     }
+  }
+   
 }
 startButton.addEventListener('click', startGame)
 
@@ -269,4 +275,13 @@ function checkScore(user, userHits, userSunkShips) {
 
   console.log('playerHits', playerHits)
   console.log('playerSunkShips', playerSunkShips)
+
+  if (playerSunkShips.length === 5) {
+    infoDisplay.textContent = 'You sunk all the computers ships. You Won!'
+    gameOver = true
+  }
+  if (computerSunkShips.length === 5) {
+    infoDisplay.textContent = 'The computer has sunk all your ships. You Lost!'
+    gameOver = true
+  }
 }
