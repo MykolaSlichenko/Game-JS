@@ -223,7 +223,7 @@ function computerGo() {
       ) {
         allBoardBlocks[randomGo].classList.add('boom')
         infoDisplay.textContent = 'The computer hit your ship!'
-        let classes = Array.from(allBoardBlocks[randomGo])
+        let classes = Array.from(allBoardBlocks[randomGo].classList)
         classes = classes.filter(className => className !== 'block')
         classes = classes.filter(className => className !== 'boom')
         classes = classes.filter(className => className !== 'taken')
@@ -239,7 +239,7 @@ function computerGo() {
       playerTurn = true
       turnDisplay.textContent = 'Your Go!'
       infoDisplay.textContent = 'Please take your go.'
-      const allBoardBlocks = infoDisplay.textContent = document.querySelectorAll('#computer div')
+      const allBoardBlocks = document.querySelectorAll('#computer div')
       allBoardBlocks.forEach(block => block.addEventListener('click', handleClick))
     }, 6000)
   }
@@ -251,6 +251,13 @@ function checkScore(user, userHits, userSunkShips) {
       userHits.filter(storedShipName => storedShipName === shipName).length === shipLength
     ) {
       infoDisplay.textContent = `you sunk the ${user}'s ${shipName}`
+      if (user === 'player') {
+        playerHits = userHits.filter(storedShipName => storedShipName !== shipName)
+      }
+      if (user === 'computer') {
+        computerHits = userHits.filter(storedShipName => storedShipName !== shipName)
+      }
+      userSunkShips.push(shipName)
     }
   }
 
