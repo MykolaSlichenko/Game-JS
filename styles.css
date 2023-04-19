@@ -80,10 +80,26 @@
   background-color: grey;
 }
 
+#computer .destroyer,
+#computer .submarine,
+#computer .cruiser,
+#computer .battleship,
+#computer .carrier {
+  background-color: darkgreen;
+}
+
 .boom {
-  background-color: red;
+  background-color: red !important;
 }
 
 .empty {
-  background-color: grey;
+  background-color: grey !important;
+}
+
+.turn {
+  font-size: 20px;
+}
+
+.info {
+  font-size: 20px;
 }
