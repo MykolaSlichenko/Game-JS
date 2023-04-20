@@ -165,7 +165,7 @@ let playerTurn;
 function startGame() {
   if (playerTurn === undefined) {
     if (optionContainer.children.length !== 0) {
-      infoDisplay.textContent = 'Please place all your pieces first!'
+      infoDisplay.textContent = 'Please place all your ships first!'
     } else {
       const allBoardBlocks = document.querySelectorAll('#computer div');
       allBoardBlocks.forEach(block => block.addEventListener('click', handleClick))
@@ -285,6 +285,7 @@ function checkScore(user, userHits, userSunkShips) {
   if (computerSunkShips.length === 5) {
     infoDisplay.textContent = 'The computer has sunk all your ships. You Lost!';
     gameOver = true
+    document.body.style.background = 'black';
   }
 
 }
